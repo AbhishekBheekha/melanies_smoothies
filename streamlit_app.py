@@ -1,5 +1,6 @@
 # Import python packages
 
+import requests
 import streamlit as st
 from snowflake.snowpark.functions import col
 
@@ -44,8 +45,6 @@ if ingredients_list:
         success_message = (' Your Smoothie is ordered, '+ name_on_order + ' !' )
         st.success(success_message, icon="✅")
 
-import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-#st.text(fruityvice_response.json())
-fv_fd = st.dataframe(data = fruityvice_response.json(), use_container_width=True)
+    fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+    fv_fd = st.dataframe(data = fruityvice_response.json(), use_container_width=True)
 
